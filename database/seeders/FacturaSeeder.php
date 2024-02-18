@@ -13,10 +13,11 @@ class FacturaSeeder extends Seeder
      */
     public function run(): void
     {
+        $faker = Faker\Factory::create("es_ES");
         Factura::create([
             'nit' => rand(1,9000),
             'telefono' => rand(60000000,70000000),
-            'nombre' => 'andres'
+            'nombre' => $faker->name
         ]);
     }
 }

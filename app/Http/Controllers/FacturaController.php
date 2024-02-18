@@ -65,7 +65,14 @@ class FacturaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $facturaActual = Factura::findOrFail(intval($id));
+        $detalles = Detalle::where('factura_id', '=', $facturaActual->id)->get();
+        $vectordeproductos = Producto::all();
+        return view('factura.edit', [
+        'facturaActual' => $facturaActual,
+        'detalles' => $detalles,
+        'vectorDeProductos' => $vectordeproductos
+        ]);
     }
 
     /**
